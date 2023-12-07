@@ -16,9 +16,21 @@ RUN \
 
 FROM ubuntu:23.10
 
+RUN apt update && \
+    apt upgrade -y && \
+    apt install sudo -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# RUN adduser -m ${RUNUSER} && \
+#     echo "runner:runner" | chpasswd && \
+#     adduser ${RUNUSER} sudo && \
+#     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 RUN groupadd "runner" && useradd -g "runner" --shell /bin/bash "runner" \
     && mkdir -p "/home/runner" \
-    && chown -R "runner":"runner" "/home/runner"
+    && chown -R "runner":"runner" "/home/runner
+RUN adduser "runner" "sudo"
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 COPY --from=install /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=install ./runner /home/runner
