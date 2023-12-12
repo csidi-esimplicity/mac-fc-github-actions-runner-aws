@@ -10,8 +10,8 @@ status_code=$(curl \
     -w "%{http_code}" \
     -o /tmp/token_response.json \
     -X POST \
-    -H "Authorization: token ${PERSONAL_ACCESS_TOKEN}" \
-    "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/runners/registration-token" \
+    -H "Authorization: token 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" \
+    "https://api.github.com/repos/Enterprise-CMCS/tmsis/actions/runners/registration-token" \
     )
 
 if [[ $status_code == "201" ]]
@@ -38,7 +38,7 @@ LABELS=$(echo "$UNIQUE_ID" "$RUNNER_LABELS" | tr ' ' ',' )
 
 ./config.sh \
       --unattended \
-      --url "https://github.com/${REPO_OWNER}/${REPO_NAME}" \
+      --url "https://github.com/Enterprise-CMCS/tmsis" \
       --token "${REGISTRATION_TOKEN}" \
       --name "${UNIQUE_ID}" \
       --labels "${LABELS}" \
@@ -46,5 +46,6 @@ LABELS=$(echo "$UNIQUE_ID" "$RUNNER_LABELS" | tr ' ' ',' )
       --replace \
       --disableupdate \
       --ephemeral
+
 
 ./run.sh

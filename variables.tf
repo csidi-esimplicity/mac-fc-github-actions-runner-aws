@@ -3,7 +3,7 @@
 variable "ecr_repo_url" {
   type        = string
   description = "The URL of the github actions ECR repository"
-  default     = "037370603820.dkr.ecr.us-east-1.amazonaws.com/github-actions-runner"
+  default     = "717546955209.dkr.ecr.us-east-1.amazonaws.com/tmsis-ingest"
 }
 
 variable "ecr_repo_tag" {
@@ -15,7 +15,7 @@ variable "ecr_repo_tag" {
 variable "ecr_repository_arns" {
   description = "The ECR ARNs referenced by aws_iam_policy_document task_role_policy_doc"
   type        = list(string)
-  default     = ["arn:aws:ecr:us-east-1:037370603820:repository/github-actions-runner"]
+  default     = ["arn:aws:ecr:us-east-1:717546955209:repository/tmsis-ingest"]
 }
 
 # ECS variables
@@ -100,23 +100,23 @@ variable "permissions_boundary" {
 variable "task_cpu" {
   description = "The ECS Task CPU size"
   type        = number
-  default     = 256
+  default     = 1024
 }
 
 variable "task_memory" {
   description = "The ECS Task memory size"
   type        = number
-  default     = 1024
+  default     = 4096
 }
 
 variable "container_cpu" {
   description = "The container CPU size"
   type        = number
-  default     = 128
+  default     = 1024
 }
 
 variable "container_memory" {
   description = "The container memory size"
   type        = number
-  default     = 1024
+  default     = 4096
 }
