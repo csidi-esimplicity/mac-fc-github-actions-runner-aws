@@ -100,23 +100,23 @@ variable "permissions_boundary" {
 variable "task_cpu" {
   description = "The ECS Task CPU size"
   type        = number
-  default     = 1024
+  default     = 4096
 }
 
 variable "task_memory" {
   description = "The ECS Task memory size"
   type        = number
-  default     = 4096
+  default     = 8192
 }
 
 variable "container_cpu" {
   description = "The container CPU size"
   type        = number
-  default     = 1024
+  default     = 4096
 }
 
 variable "container_memory" {
   description = "The container memory size"
   type        = number
-  default     = 4096
+  default     = 8192
 }
