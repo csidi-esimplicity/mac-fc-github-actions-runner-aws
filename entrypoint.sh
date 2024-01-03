@@ -10,7 +10,7 @@ status_code=$(curl \
     -w "%{http_code}" \
     -o /tmp/token_response.json \
     -X POST \
-    -H "Authorization: token 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" \
+    -H "Authorization: token ${PERSONAL_ACCESS_TOKEN}" \
     "https://api.github.com/repos/Enterprise-CMCS/tmsis/actions/runners/registration-token" \
     )
 
